@@ -30,7 +30,7 @@ const launch = {
 const queue = {
     accept: new Element(screenSize.width - 640, screenSize.height - 380),
     colors: {
-        inQueue: ['0f1a18'],
+        inQueue: ['0f1a18', '101b19'],
         dodgeTimer: ['040606'],
         gameFound: ['c6f2f3', '9cbebe'],
         gameAccepted: ['545451'],
