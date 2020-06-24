@@ -58,7 +58,11 @@ const game = {
     items: [
         new Element(screenSize.width - 1070, screenSize.height - 710),
         new Element(screenSize.width - 1015, screenSize.height - 710),
-    ]
+    ],
+    lanes: {
+        mid: new Element(screenSize.width - 77, screenSize.height - 270)
+    },
+    middleOfTheScreen: new Element(screenSize.width / 2, screenSize.height / 2)
 }
 
 /**
@@ -72,12 +76,23 @@ function sleep(ms) {
 }
 
 /**
+ * 
+ * @param {int} max
+ * 
+ * @returns {int}
+ */
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}
+
+/**
  * @param {Element} button
+ * @param {string} whichButton
  * @param {boolean} double
  */
-function clickButton(button, double = false) {
+function clickButton(button, whichButton = 'left', double = false) {
     robot.moveMouse(button.x, button.y)
-    robot.mouseClick('left', double)
+    robot.mouseClick(whichButton, double)
 }
 
 /**
@@ -155,26 +170,57 @@ async function waitLoadingScreen() {
 }
 
 function playTheGame() {
+    console.log('In game !')
 
     setTimeout(() => {
         buyStarterItems()
+        setTimeout(() => {
+            let randomInterval = null
+            setInterval(() => {
+                
+                laneMid()
+                if (randomInterval !== null) {
+                    clearInterval(randomInterval)
+                }
+
+                randomInterval = setInterval(() => {
+                    moveRandomly()
+                }, 10000)
+                
+            }, 60000)
+        }, 5000)
     }, 20000)
 }
 
 function buyStarterItems() {
+
+    console.log('Buying items...')
 
     robot.keyTap(game.shop.open)
 
     setTimeout(async () => {
 
         for (let item of game.items) {
-            clickButton(item, true)
+            clickButton(item, 'left', true)
             await sleep(1000)
         }
 
         robot.keyTap(game.shop.exit)
+
+        console.log('Items bought !')
         
     }, 1000)
+}
+
+function laneMid() {
+    clickButton(game.lanes.mid)
+    setTimeout(() => {
+        clickButton(game.middleOfTheScreen, 'right')
+    }, 1000)
+}
+
+function moveRandomly() {
+    clickButton(new Element(getRandomInt(screenSize.width), getRandomInt(screenSize.height)), 'right')
 }
 
 createGame()
