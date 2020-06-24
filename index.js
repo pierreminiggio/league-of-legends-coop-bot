@@ -161,9 +161,12 @@ function playTheGame() {
     }, 20000)
 }
 
-async function buyStarterItems() {
+function buyStarterItems() {
+    
     robot.keyTap(game.shop.open)
-    setTimeout(() => {
+
+    setTimeout(async () => {
+
         for (let item of game.items) {
             clickButton(item, true)
             await sleep(1000)
