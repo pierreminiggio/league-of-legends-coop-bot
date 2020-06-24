@@ -38,6 +38,11 @@ const queue = {
     }
 }
 
+const champSelect = {
+    firstChamp: new Element(screenSize.width - 765, screenSize.height - 680),
+    lockIn: new Element(screenSize.width - 640, screenSize.height - 330)
+}
+
 /**
  * 
  * @param {int} ms
@@ -111,9 +116,11 @@ function startQueueing()
 }
 
 function launchChampSelect() {
-    console.log('pick a champ')
+    console.log('Picking a champ...')
+    clickButton(champSelect.firstChamp)
+    setTimeout(() => {
+        clickButton(champSelect.lockIn)
+    }, 2000)
 }
 
 createGame()
-
-
