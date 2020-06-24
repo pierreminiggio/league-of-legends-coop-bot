@@ -50,6 +50,17 @@ const loadingScreen = {
     }
 }
 
+const game = {
+    shop: {
+        open: 'p',
+        exit: 'escape'
+    },
+    items: [
+        new Element(screenSize.width - 1070, screenSize.height - 710),
+        new Element(screenSize.width - 1015, screenSize.height - 710),
+    ]
+}
+
 /**
  * 
  * @param {int} ms
@@ -61,11 +72,12 @@ function sleep(ms) {
 }
 
 /**
- * @param {Element} button 
+ * @param {Element} button
+ * @param {boolean} double
  */
-function clickButton(button) {
+function clickButton(button, double = false) {
     robot.moveMouse(button.x, button.y)
-    robot.mouseClick('left')
+    //robot.mouseClick('left', double)
 }
 
 /**
@@ -76,9 +88,6 @@ function clickButton(button) {
 function getColor(element) {
     return robot.getPixelColor(element.x, element.y)
 }
-
-let lastState = null;
-let color = null;
 
 function createGame() {
     clickButton(launch.button)
@@ -97,9 +106,13 @@ function createGame() {
 
 function startQueueing()
 {
+
+    let lastState = null;
+    let color = null;
+
     clickButton(launch.page.confirm)
     console.log('Start queuing !')
-    setInterval(() => {
+    let queueInterval = setInterval(() => {
         color = getColor(queue.accept)
         console.log('Color : ' + color)
         if (queue.colors.inQueue.includes(color)) {
@@ -118,6 +131,7 @@ function startQueueing()
                 }, 2000)
             }
         } else if (loadingScreen.colors.loading.includes(getColor(loadingScreen.reference))) {
+            clearInterval(queueInterval)
             waitLoadingScreen()
         }
         lastState = color
@@ -137,7 +151,27 @@ async function waitLoadingScreen() {
         console.log('On the loading screen...')
         await sleep(1000)
     }
-    console.log('In game !')
+    playTheGame()
+}
+
+function playTheGame() {
+
+    setTimeout(() => {
+        buyStarterItems()
+    }, 20000)
+}
+
+async function buyStarterItems() {
+    robot.keyTap(game.shop.open)
+    setTimeout(() => {
+        for (let item of game.items) {
+            clickButton(item, true)
+            await sleep(1000)
+        }
+
+        robot.keyTap(game.shop.exit)
+        
+    }, 1000)
 }
 
 createGame()
