@@ -77,7 +77,7 @@ function sleep(ms) {
  */
 function clickButton(button, double = false) {
     robot.moveMouse(button.x, button.y)
-    //robot.mouseClick('left', double)
+    robot.mouseClick('left', double)
 }
 
 /**
@@ -162,7 +162,7 @@ function playTheGame() {
 }
 
 function buyStarterItems() {
-    
+
     robot.keyTap(game.shop.open)
 
     setTimeout(async () => {
