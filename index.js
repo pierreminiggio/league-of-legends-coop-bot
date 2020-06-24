@@ -43,6 +43,13 @@ const champSelect = {
     lockIn: new Element(screenSize.width - 640, screenSize.height - 330)
 }
 
+const loadingScreen = {
+    reference: new Element(screenSize.width / 2, (screenSize.height / 2) + 10),
+    colors: {
+        loading: ['9e895f']
+    }
+}
+
 /**
  * 
  * @param {int} ms
@@ -110,6 +117,8 @@ function startQueueing()
                     launchChampSelect()
                 }, 2000)
             }
+        } else if (loadingScreen.colors.loading.includes(getColor(loadingScreen.reference))) {
+            waitLoadingScreen()
         }
         lastState = color
     }, 1000)
@@ -121,6 +130,14 @@ function launchChampSelect() {
     setTimeout(() => {
         clickButton(champSelect.lockIn)
     }, 2000)
+}
+
+async function waitLoadingScreen() {
+    while (loadingScreen.colors.loading.includes(getColor(loadingScreen.reference))) {
+        console.log('On the loading screen...')
+        await sleep(1000)
+    }
+    console.log('In game !')
 }
 
 createGame()
