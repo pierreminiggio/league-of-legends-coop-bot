@@ -34,7 +34,7 @@ const queue = {
         dodgeTimer: ['040606'],
         gameFound: ['c6f2f3', '9cbebe', '8fafb0'],
         gameAccepted: ['545451'],
-        champSelect: ['000000', '02060a']
+        champSelect: ['000000', '02060a', '02050a']
     }
 }
 
