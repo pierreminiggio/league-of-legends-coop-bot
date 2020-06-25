@@ -16,6 +16,21 @@ class Element
     }
 }
 
+class Spell
+{
+    /**
+     * 
+     * @param {Element} element
+     * @param {string[]} color
+     * @param {string} key
+     */
+    constructor(element, color, key) {
+        this.element = element
+        this.color = color
+        this.key = key
+    }
+}
+
 const launch = {
     button: new Element(screenSize.width - 1050, screenSize.height - 780),
     page: {
@@ -60,9 +75,31 @@ const game = {
         new Element(screenSize.width - 1015, screenSize.height - 710),
     ],
     lanes: {
-        mid: new Element(screenSize.width - 77, screenSize.height - 270)
+        mid: new Element(screenSize.width - 93, screenSize.height - 250)
     },
-    middleOfTheScreen: new Element(screenSize.width / 2, screenSize.height / 2)
+    middleOfTheScreen: new Element(screenSize.width / 2, screenSize.height / 2),
+    levelUpSpells: [
+        new Spell(
+            new Element(screenSize.width - 645, screenSize.height - 273),
+            ['fffa9d'],
+            'r'
+        ),
+        new Spell(
+            new Element(screenSize.width - 777, screenSize.height - 273),
+            ['fffa9d'],
+            'a'
+        ),
+        new Spell(
+            new Element(screenSize.width - 730, screenSize.height - 273),
+            ['fff36b'],
+            'z'
+        ),
+        new Spell(
+            new Element(screenSize.width - 690, screenSize.height - 273),
+            ['aeae77'],
+            'e'
+        )
+    ]
 }
 
 /**
@@ -169,26 +206,13 @@ async function waitLoadingScreen() {
     playTheGame()
 }
 
+let randomInterval = null
 function playTheGame() {
     console.log('In game !')
 
     setTimeout(() => {
         buyStarterItems()
-        setTimeout(() => {
-            let randomInterval = null
-            setInterval(() => {
-                
-                laneMid()
-                if (randomInterval !== null) {
-                    clearInterval(randomInterval)
-                }
-
-                randomInterval = setInterval(() => {
-                    moveRandomly()
-                }, 10000)
-                
-            }, 60000)
-        }, 5000)
+        goLaning()
     }, 20000)
 }
 
@@ -212,15 +236,29 @@ function buyStarterItems() {
     }, 1000)
 }
 
+function goLaning() {
+    setTimeout(() => {
+        laneMid()
+
+        setTimeout(() => {
+            randomInterval = setInterval(() => {
+                moveRandomly()
+            }, 10000)
+        }, 30000)
+    }, 5000)
+}
+
 function laneMid() {
     clickButton(game.lanes.mid)
     setTimeout(() => {
+        console.log('Going mid !')
         clickButton(game.middleOfTheScreen, 'right')
     }, 1000)
 }
 
 function moveRandomly() {
-    clickButton(new Element(getRandomInt(screenSize.width), getRandomInt(screenSize.height)), 'right')
+    console.log('Moving randomly ! :D')
+    clickButton(new Element(screenSize.width * 7/16 + getRandomInt(screenSize.width / 8), screenSize.height * 7/16 + getRandomInt(screenSize.height / 8)), 'right')
 }
 
 createGame()
