@@ -62,7 +62,11 @@ const game = {
     lanes: {
         mid: new Element(screenSize.width - 93, screenSize.height - 250)
     },
-    middleOfTheScreen: new Element(screenSize.width / 2, screenSize.height / 2)
+    middleOfTheScreen: new Element(screenSize.width / 2, screenSize.height / 2),
+    victory: {
+        reference: new Element(screenSize.width - 639, screenSize.height - 447),
+        colors: ['910e18']
+    }
 }
 
 /**
@@ -172,8 +176,9 @@ async function waitLoadingScreen() {
     playTheGame()
 }
 
-let randomInterval = null
 let laneInterval = null
+let randomInterval = null
+let victoryCheckInterval = null
 function playTheGame() {
     console.log('In game !')
 
@@ -187,6 +192,14 @@ function playTheGame() {
             goLaning()
         }, 120000)
     }, 20000)
+
+    if (victoryCheckInterval !== null) {
+        clearInterval(victoryCheckInterval)
+    }
+
+    victoryCheckInterval = setInterval(() => {
+        checkIfVictory()
+    }, 1000)
 }
 
 function buyStarterItems() {
@@ -236,6 +249,28 @@ function laneMid() {
 function moveRandomly() {
     console.log('Moving randomly ! :D')
     clickButton(new Element(screenSize.width * 7/16 + getRandomInt(screenSize.width / 8), screenSize.height * 7/16 + getRandomInt(screenSize.height / 8)), 'right')
+}
+
+function checkIfVictory() {
+    console.log(getColor(game.victory.reference))
+    if (game.victory.colors.includes(getColor(game.victory.reference))) {
+
+        console.log('Victory !')
+
+        if (laneInterval !== null) {
+            clearInterval(laneInterval)
+        }
+
+        if (randomInterval !== null) {
+            clearInterval(randomInterval)
+        }
+
+        console.log('Waiting...')
+
+        setTimeout(() => {
+            console.log('Waited')
+        }, 40000)
+    }
 }
 
 createGame()
