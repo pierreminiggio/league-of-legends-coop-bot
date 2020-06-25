@@ -6,28 +6,12 @@ robot.setKeyboardDelay(0)
 class Element
 {
     /**
-     * 
      * @param {int} x 
      * @param {int} y 
      */
     constructor(x, y) {
         this.x = x
         this.y = y
-    }
-}
-
-class Spell
-{
-    /**
-     * 
-     * @param {Element} element
-     * @param {string[]} color
-     * @param {string} key
-     */
-    constructor(element, color, key) {
-        this.element = element
-        this.color = color
-        this.key = key
     }
 }
 
@@ -77,29 +61,7 @@ const game = {
     lanes: {
         mid: new Element(screenSize.width - 93, screenSize.height - 250)
     },
-    middleOfTheScreen: new Element(screenSize.width / 2, screenSize.height / 2),
-    levelUpSpells: [
-        new Spell(
-            new Element(screenSize.width - 645, screenSize.height - 273),
-            ['fffa9d'],
-            'r'
-        ),
-        new Spell(
-            new Element(screenSize.width - 777, screenSize.height - 273),
-            ['fffa9d'],
-            'a'
-        ),
-        new Spell(
-            new Element(screenSize.width - 730, screenSize.height - 273),
-            ['fff36b'],
-            'z'
-        ),
-        new Spell(
-            new Element(screenSize.width - 690, screenSize.height - 273),
-            ['aeae77'],
-            'e'
-        )
-    ]
+    middleOfTheScreen: new Element(screenSize.width / 2, screenSize.height / 2)
 }
 
 /**
@@ -207,12 +169,19 @@ async function waitLoadingScreen() {
 }
 
 let randomInterval = null
+let laneInterval = null
 function playTheGame() {
     console.log('In game !')
 
     setTimeout(() => {
         buyStarterItems()
         goLaning()
+        if (laneInterval !== null) {
+            clearInterval(laneInterval)
+        }
+        laneInterval = setInterval(() => {
+            goLaning()
+        }, 120000)
     }, 20000)
 }
 
@@ -241,9 +210,20 @@ function goLaning() {
         laneMid()
 
         setTimeout(() => {
+            if (randomInterval !== null) {
+                clearInterval(randomInterval)
+            }
             randomInterval = setInterval(() => {
                 moveRandomly()
             }, 10000)
+
+            if (potionInterval !== null) {
+                clearInterval(potionInterval)
+            }
+            potionInterval = setInterval(() => {
+                game.potion.checkAndPlay()
+            }, 10000)
+
         }, 30000)
     }, 5000)
 }
