@@ -33,7 +33,8 @@ const queue = {
         dodgeTimer: ['040606'],
         gameFound: ['c6f2f3', '9cbebe', '8fafb0'],
         gameAccepted: ['545451'],
-        champSelect: ['000000', '02060a', '02050a']
+        champSelect: ['000000', '02060a', '02050a'],
+        alreadyIngame: ['5d7760']
     }
 }
 
@@ -147,6 +148,9 @@ function startQueueing()
         } else if (loadingScreen.colors.loading.includes(getColor(loadingScreen.reference))) {
             clearInterval(queueInterval)
             waitLoadingScreen()
+        } else if (queue.colors.alreadyIngame.includes(getColor(color))) {
+            clearInterval(queueInterval)
+            playTheGame()
         }
         lastState = color
     }, 1000)
