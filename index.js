@@ -221,13 +221,6 @@ function goLaning() {
                 moveRandomly()
             }, 10000)
 
-            if (potionInterval !== null) {
-                clearInterval(potionInterval)
-            }
-            potionInterval = setInterval(() => {
-                game.potion.checkAndPlay()
-            }, 10000)
-
         }, 30000)
     }, 5000)
 }
