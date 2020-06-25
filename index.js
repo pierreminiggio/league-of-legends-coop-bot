@@ -69,6 +69,14 @@ const game = {
     }
 }
 
+const afterGame = {
+    accept: {
+        button: new Element(screenSize.width - 602, screenSize.height - 267),
+        colors: ['081018']
+    },
+    exit: new Element(screenSize.width - 796, screenSize.height - 276)
+}
+
 /**
  * 
  * @param {int} ms
@@ -269,8 +277,36 @@ function checkIfVictory() {
 
         setTimeout(() => {
             console.log('Waited')
-        }, 40000)
+            acceptRewards()
+        }, 45000)
     }
+}
+
+let afterRewardsInterval = null
+function acceptRewards() {
+    if (afterRewardsInterval !== null) {
+        clearInterval(afterRewardsInterval)
+    }
+
+    afterRewardsInterval = setInterval(() => {
+        console.log('Try clicking button...')
+        console.log(getColor(afterGame.accept.button))
+        if (afterGame.accept.colors.includes(getColor(afterGame.accept.button))) {
+            clickButton(afterGame.accept.button)
+            console.log('Clicked button !')
+        } else if (afterRewardsInterval !== null) {
+            clearInterval(afterRewardsInterval)
+            console.log('Finished clicking buttons !')
+            console.log('Exiting stats screen...')
+            setTimeout(() => {
+                console.log('Exited stats screen !')
+                clickButton(afterGame.exit)
+                setTimeout(() => {
+                    createGame()
+                }, 3000)
+            }, 5000)
+        }
+    }, 5000)
 }
 
 createGame()
