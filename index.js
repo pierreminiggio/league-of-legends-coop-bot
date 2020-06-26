@@ -265,6 +265,10 @@ function checkIfVictory() {
 
         console.log('Victory !')
 
+        if (victoryCheckInterval !== null) {
+            clearInterval(victoryCheckInterval)
+        }
+
         if (laneInterval !== null) {
             clearInterval(laneInterval)
         }
