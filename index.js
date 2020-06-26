@@ -198,7 +198,7 @@ function playTheGame() {
         }
         laneInterval = setInterval(() => {
             goLaning()
-        }, 120000)
+        }, 30000)
     }, 20000)
 
     if (victoryCheckInterval !== null) {
