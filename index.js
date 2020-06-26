@@ -192,13 +192,16 @@ function playTheGame() {
 
     setTimeout(() => {
         buyStarterItems()
-        goLaning()
-        if (laneInterval !== null) {
-            clearInterval(laneInterval)
-        }
-        laneInterval = setInterval(() => {
+        setTimeout(() => {
             goLaning()
-        }, 30000)
+            if (laneInterval !== null) {
+                clearInterval(laneInterval)
+            }
+            laneInterval = setInterval(() => {
+                goLaning()
+            }, 30000)
+        }, 5000)
+        
     }, 20000)
 
     if (victoryCheckInterval !== null) {
@@ -288,7 +291,7 @@ function checkIfVictory() {
             if (randomInterval !== null) {
                 clearInterval(randomInterval)
             }
-            
+
             console.log('Waited')
             acceptRewards()
         }, 45000)
