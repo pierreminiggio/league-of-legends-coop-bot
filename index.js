@@ -256,7 +256,7 @@ function laneMid() {
 
 function moveRandomly() {
     console.log('Moving randomly ! :D')
-    clickButton(new Element(screenSize.width * 7/16 + getRandomInt(screenSize.width / 8), screenSize.height * 7/16 + getRandomInt(screenSize.height / 8)), 'right')
+    clickButton(new Element(screenSize.width * 3/8 + getRandomInt(screenSize.width / 4), screenSize.height * 3/8 + getRandomInt(screenSize.height / 4)), 'right')
 }
 
 function checkIfVictory() {
