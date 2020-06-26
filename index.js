@@ -260,7 +260,7 @@ function moveRandomly() {
 }
 
 function checkIfVictory() {
-    console.log(getColor(game.victory.reference))
+
     if (game.victory.colors.includes(getColor(game.victory.reference))) {
 
         console.log('Victory !')
@@ -280,6 +280,15 @@ function checkIfVictory() {
         console.log('Waiting...')
 
         setTimeout(() => {
+
+            if (laneInterval !== null) {
+                clearInterval(laneInterval)
+            }
+    
+            if (randomInterval !== null) {
+                clearInterval(randomInterval)
+            }
+            
             console.log('Waited')
             acceptRewards()
         }, 45000)
