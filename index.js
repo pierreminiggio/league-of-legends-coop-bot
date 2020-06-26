@@ -240,7 +240,7 @@ function goLaning() {
             }
             randomInterval = setInterval(() => {
                 moveRandomly()
-            }, 10000)
+            }, 2000)
 
         }, 30000)
     }, 5000)
