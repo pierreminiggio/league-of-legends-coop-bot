@@ -34,7 +34,7 @@ const queue = {
         gameFound: ['c6f2f3', '9cbebe', '8fafb0'],
         gameAccepted: ['545451'],
         champSelect: ['000000', '02060a', '02050a'],
-        alreadyIngame: ['5d7760', '879581']
+        alreadyIngame: ['5d7760', '879581', '3e5543']
     }
 }
 
