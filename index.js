@@ -190,6 +190,13 @@ let victoryCheckInterval = null
 function playTheGame() {
     console.log('In game !')
 
+    if (laneInterval !== null) {
+        clearInterval(laneInterval)
+    }
+    if (randomInterval !== null) {
+        clearInterval(randomInterval)
+    }
+
     setTimeout(() => {
         buyStarterItems()
         setTimeout(() => {
@@ -234,19 +241,17 @@ function buyStarterItems() {
 }
 
 function goLaning() {
+    laneMid()
+
     setTimeout(() => {
-        laneMid()
+        if (randomInterval !== null) {
+            clearInterval(randomInterval)
+        }
+        randomInterval = setInterval(() => {
+            moveRandomly()
+        }, 2000)
 
-        setTimeout(() => {
-            if (randomInterval !== null) {
-                clearInterval(randomInterval)
-            }
-            randomInterval = setInterval(() => {
-                moveRandomly()
-            }, 2000)
-
-        }, 30000)
-    }, 5000)
+    }, 30000)
 }
 
 function laneMid() {
