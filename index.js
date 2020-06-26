@@ -160,7 +160,7 @@ function startQueueing()
         } else if (loadingScreen.colors.loading.includes(getColor(loadingScreen.reference))) {
             clearInterval(queueInterval)
             waitLoadingScreen()
-        } else if (queue.colors.alreadyIngame.includes(getColor(color))) {
+        } else if (queue.colors.alreadyIngame.includes(color)) {
             clearInterval(queueInterval)
             playTheGame()
         }
