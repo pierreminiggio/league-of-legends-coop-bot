@@ -29,10 +29,10 @@ const launch = {
 const queue = {
     accept: new Element(screenSize.width - 640, screenSize.height - 380),
     colors: {
-        inQueue: ['0f1a18', '101b19', '111c1a', '0e1917'],
+        inQueue: ['0f1a18', '101b19', '111c1a', '0e1917', '081810'],
         dodgeTimer: ['040606', '030605'],
-        gameFound: ['c6f2f3', '9cbebe', '8fafb0', '48585c'],
-        gameAccepted: ['545451', '282e31'],
+        gameFound: ['c6f2f3', '9cbebe', '8fafb0', '48585c', 'c6f3f7'],
+        gameAccepted: ['545451', '282e31', '525152'],
         champSelect: ['000000', '02060a', '02050a'],
         alreadyIngame: ['5d7760', '879581', '3e5543']
     }
