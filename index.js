@@ -34,7 +34,7 @@ const queue = {
         gameFound: ['c6f2f3', '9cbebe', '8fafb0', '48585c', 'c6f3f7'],
         gameAccepted: ['545451', '282e31', '525152'],
         champSelect: ['000000', '02060a', '02050a'],
-        alreadyIngame: ['5d7760', '879581', '3e5543']
+        alreadyIngame: ['5d7760', '879581', '3e5543', '292821']
     }
 }
 
@@ -46,7 +46,7 @@ const champSelect = {
 const loadingScreen = {
     reference: new Element(screenSize.width / 2, (screenSize.height / 2) + 10),
     colors: {
-        loading: ['9e895f']
+        loading: ['9e895f', '9c8a5a']
     }
 }
 
