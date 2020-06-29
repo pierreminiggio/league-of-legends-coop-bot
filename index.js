@@ -46,7 +46,7 @@ const champSelect = {
 const loadingScreen = {
     reference: new Element(screenSize.width / 2, (screenSize.height / 2) + 10),
     colors: {
-        loading: ['9e895f', '9c8a5a', '9c9e9c']
+        loading: ['9e895f', '9c8a5a', '9c9e9c' /* freezing */]
     }
 }
 
