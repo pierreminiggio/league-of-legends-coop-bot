@@ -18,3 +18,5 @@ npm install
 ```
 node index.js
 ```
+
+à utiliser à vos propres risques, je ne suis pas responsable si votre compte League Of Legends subit des sanctions suite à l'utilisation de ce script.
