@@ -1,6 +1,8 @@
 # league-of-legends-coop-bot
 
-Prérequis : Node JS installé
+Prérequis :
+- Node JS installé et mis dans le PATH
+- Python 3 installé et mis dans le PATH
 
 Pour l'installer :
 ```
