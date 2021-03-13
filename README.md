@@ -1,12 +1,14 @@
 # league-of-legends-coop-bot
 
 Prérequis :
+- Git installé et mis dans le PATH
 - Node JS installé et mis dans le PATH
 - Python 3 installé et mis dans le PATH
 
 Pour l'installer :
 ```
 git clone https://github.com/pierreminiggio/league-of-legends-coop-bot
+cd league-of-legends-coop-bot
 ```
 
 ```
