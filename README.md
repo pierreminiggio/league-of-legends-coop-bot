@@ -12,8 +12,8 @@ cd league-of-legends-coop-bot
 ```
 
 ```
-npm install
 npm install -g windows-build-tools
+npm install
 ```
 
 - Utiliser un écran 1280x1024
