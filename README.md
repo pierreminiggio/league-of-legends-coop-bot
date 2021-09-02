@@ -4,6 +4,10 @@ Prérequis :
 - Git installé et mis dans le PATH
 - Node JS installé et mis dans le PATH
 - Python 3 installé et mis dans le PATH
+- Utiliser un écran 1280x1024
+- Paramétrer son client LOL en 1024x576
+- Paramétrer sa résolution LOL en game en 1280x720
+
 
 Pour l'installer, ouvrir une console dans le dossier où on veut installer le bot, et executer les commandes suivantes :
 ```
@@ -16,9 +20,7 @@ npm install -g windows-build-tools
 npm install
 ```
 
-- Utiliser un écran 1280x1024
-- Paramétrer son client LOL en 1024x576
-- Paramétrer sa résolution LOL en game en 1280x720
+- Lancer LOL
 - Appuyer sur "Play" et sur "Coop VS IA"
 
 Executer la commande : 
