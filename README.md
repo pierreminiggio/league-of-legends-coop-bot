@@ -18,7 +18,7 @@ npm install
 
 - Utiliser un écran 1280x1024
 - Paramétrer son client LOL en 1024x576
-- Paramétrer son jeu en 1280x720
+- Paramétrer sa résolution LOL en game en 1280x720
 - Appuyer sur "Play" et sur "Coop VS IA"
 
 Executer la commande : 
