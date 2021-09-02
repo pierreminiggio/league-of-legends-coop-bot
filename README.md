@@ -1,5 +1,7 @@
 # league-of-legends-coop-bot
 
+[J'ai parlé de ce code dans cette vidéo : https://www.youtube.com/watch?v=9djadlNYh3Q](https://www.youtube.com/watch?v=9djadlNYh3Q)
+
 Prérequis :
 - Git installé et mis dans le PATH
 - Node JS installé et mis dans le PATH
