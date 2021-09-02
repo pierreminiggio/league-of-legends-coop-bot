@@ -8,6 +8,8 @@ Prérequis :
 - Paramétrer son client LOL en 1024x576
 - Paramétrer sa résolution LOL en game en 1280x720
 
+([Pour mettre un programme dans le path, si jamais le logiciel d'installation le fait pas pour vous, j'ai cette partie d'un de mes tutos qui montre comment le faire (en utilisant l'exemple de PHP)](https://youtu.be/Ae-XwrvYuPw?t=91))
+
 
 Pour l'installer, ouvrir une console dans le dossier où on veut installer le bot, et executer les commandes suivantes :
 ```
