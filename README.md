@@ -24,6 +24,7 @@ npm install
 
 - Lancer LOL
 - Appuyer sur "Play" et sur "Coop VS IA"
+- Paramétrer les résolution d'écrans et en jeu (décrites plus haut)
 
 Executer la commande : 
 ```
